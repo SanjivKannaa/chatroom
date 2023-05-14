@@ -28,10 +28,11 @@ def start_client():
     receive_thread = threading.Thread(target=receive_messages, args=(client_socket,))
     receive_thread.daemon = True
     receive_thread.start()
+    print("connected to server on ", SERVER_HOST, ":", SERVER_PORT)
 
     # Continuously read user input and send messages to server
     while True:
-        message = input()
+        message = input("me: ")
         client_socket.sendall(message.encode('utf-8'))
 
 if __name__ == '__main__':
